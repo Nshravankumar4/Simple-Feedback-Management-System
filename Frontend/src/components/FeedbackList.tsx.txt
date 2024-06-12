@@ -1,0 +1,15 @@
+import React from 'react';
+
+const FeedbackList: React.FC<{ feedback: { name: string, feedback: string }[] }> = ({ feedback }) => {
+  return (
+    <ul>
+      {feedback.map((entry, index) => (
+        <li key={index}>
+          <strong>{entry.name}:</strong> {entry.feedback}
+        </li>
+      ))}
+    </ul>
+  );
+};
+
+export default FeedbackList;

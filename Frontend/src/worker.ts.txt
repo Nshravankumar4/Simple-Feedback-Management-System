@@ -1,0 +1,7 @@
+onmessage = async (e) => {
+  if (e.data === 'fetchFeedback') {
+    const response = await fetch('http://localhost:3000/feedback');
+    const data = await response.json();
+    postMessage(data);
+  }
+};

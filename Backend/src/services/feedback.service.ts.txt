@@ -1,0 +1,16 @@
+interface Feedback {
+  name: string;
+  feedback: string;
+}
+
+export class FeedbackService {
+  private feedbacks: Feedback[] = [];
+
+  getAllFeedback() {
+    return this.feedbacks;
+  }
+
+  addFeedback(feedback: Feedback) {
+    this.feedbacks.push(feedback);
+  }
+}

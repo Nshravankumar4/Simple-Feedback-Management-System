@@ -1,0 +1,25 @@
+import React, { useState, useEffect } from 'react';
+import FeedbackForm from './components/FeedbackForm';
+import FeedbackList from './components/FeedbackList';
+
+const App: React.FC = () => {
+  const [feedback, setFeedback] = useState([]);
+
+  useEffect(() => {
+    const worker = new Worker('./worker.ts');
+    worker.onmessage = (e) => {
+      setFeedback(e.data);
+    };
+    worker.postMessage('fetchFeedback');
+  }, []);
+
+  return (
+    <div>
+      <h1>Feedback Management System</h1>
+      <FeedbackForm />
+      <FeedbackList feedback={feedback} />
+    </div>
+  );
+};
+
+export default App;
